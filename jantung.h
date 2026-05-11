@@ -12,3 +12,16 @@ public:
     }
 };
 
+class Manusia {
+private:
+    string nama;
+    Jantung jantung;
+public:
+    Manusia(const string& name) : nama(name) {
+        cout << "Manusia " << nama << " Dibuat\n";
+    }
+    ~Manusia() {
+        cout << "Manusia " << nama << " Dimatikan\n";
+    }
+};
+
