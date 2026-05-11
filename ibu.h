@@ -1,41 +1,39 @@
 #ifndef IBU_H
 #define IBU_H
 
+#include <iostream>
+#include <vector>
+#include <string>
+#include "anak.h"
+using namespace std;
+
 class anak;
-
-//membuat class ibu pada file header ibu.h
-class Ibu {
+class ibu {
 public:
-    //deklarasi member variabel pada class ibu
     string nama;
-    vector<anak> daftar_anak;
+    vector<anak*> DaftarAnak;
 
-    //membuat constructor dan destructor pada class ibu
-    Ibu(string pNama) :nama(pNama) {
-        cout << "Ibu "" << nama << "" ada\n";
+    ibu(string pNama) : nama(pNama) {
+        cout << "Ibu " << nama << " ada" << endl;
     };
 
-    ~Ibu() {
-        cout << "Ibu "" << nama << "" tidak ada\n";
+    ~ibu() {
+        cout << "Ibu " << nama << " tidak ada" << endl;
     };
 
-    //deklarasi prosedur tambahAnak() dan cetakAnak()
-    void tambahAnak(anak pAnak);
+    void tambahAnak(anak* pAnak);
     void cetakAnak();
 };
 
-//pendefinisian prosedur - prosedur pada class ibu diluar class
-void Ibu::tambahAnak(anak* pAnak) {
-    daftar_anak.push_back(pAnak);
+void ibu::tambahAnak(anak* pAnak) {
+    DaftarAnak.push_back(pAnak);
 }
 
-void Ibu::cetakAnak() {
-    cout << "Daftar Anak dari Ibu "" << this->nama << "":\n";
-    for (auto& a : daftar_anak)
-    {
-        cout << a->nama << "\n";
+void ibu::cetakAnak() {
+    cout << "Daftar anak dari Ibu " << nama << ":" << endl;
+    for (size_t i = 0; i < DaftarAnak.size(); i++) {
+        cout << "- " << DaftarAnak[i]->nama << endl;
     }
-    cout << endl;
 }
 
 #endif
